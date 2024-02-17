@@ -21,7 +21,11 @@ pipeline:
                   identifier: echo
                   name: echo
                   spec:
-                    command: echo hello world
+                    shell: Sh
+                    command: |-
+                      go mod init Golang-CICD-Tutorial
+                      go build
+                      go test
                   timeout: ""
                   type: Run
               - step:
@@ -38,9 +42,9 @@ pipeline:
                   timeout: ""
                   type: Plugin
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI
